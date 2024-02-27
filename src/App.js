@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { db } from './firebase'
+import { getDocs, collection } from 'firebase/firestore'
+
+async function fetchDataFromDb() {
+  const query = await getDocs(collection(db, "news"))
+
+  const data = [];
+  query.forEach((doc) => {
+    data.push({id: doc.id, ...doc.data()})
+  });
+  return data;
+}
 
 function App() {
+  const [newsData, setNewsData] = useState([]);
+
+  useEffect (() => {
+    async function fetchData() {
+      const data = await fetchDataFromDb();
+      setNewsData(data);
+    }
+    fetchData()
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello!</h1>
+      <div>
+        {newsData.map((news) => (
+          <div key={news.Title}>
+            <h1>{news.Title}</h1>
+            <p>{news.id}</p>
+            <p>{news.link}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
