@@ -3,10 +3,13 @@ import { useEffect, useState } from 'react';
 import { db } from '../firebase'
 import { getDocs, collection } from 'firebase/firestore'
 
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+} from '@mui/material';
 
 async function fetchDataFromDb() {
   const query = await getDocs(collection(db, "news"))
@@ -43,6 +46,7 @@ const Suspensions = () => {
         {newsData.map((news) => (
           <Card
             variant='outlined'
+            className='suspension-card'
             style={{
               alignContent: 'middle',
               justifyContent: 'center',
@@ -64,7 +68,13 @@ const Suspensions = () => {
                   justifyContent: 'center',
                 }}
               >
-                <a target='_blank' href={`https://liiga.fi${news.link}`}>liiga.fi</a>
+                <Button
+                  className='suspension-news-link'
+                  target='_blank'
+                  href={`https://liiga.fi${news.link}`}
+                >
+                  Lue uutinen
+                </Button>
               </CardActions>
             </React.Fragment>
           </Card>
