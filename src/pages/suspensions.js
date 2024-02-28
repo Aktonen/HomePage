@@ -25,8 +25,6 @@ const Suspensions = () => {
 
   const [newsData, setNewsData] = useState([]);
 
-  let link = 
-
   useEffect(() => {
     async function fetchData() {
       const data = await fetchDataFromDb();
