@@ -17,3 +17,20 @@ h1 {
   margin: 0px;
   padding: 20px;
 }
+
+/* Start of suspension page */
+
+.suspension-card {
+  background-color: #C0C0C0 !important;
+}
+
+.suspension-news-link {
+  color: #0072B2;
+  text-decoration: none;
+  background-color: rgb(226, 226, 226) !important;
+  font-size: small !important;
+}
+
+.suspension-news-link:hover {
+  background-color: rgba(212, 212, 212, 0.7) !important;
+}
