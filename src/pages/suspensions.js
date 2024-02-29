@@ -56,6 +56,9 @@ const Suspensions = () => {
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                   Kurinpito
                 </Typography>
+                <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
+                  {news.date}
+                </Typography>
                 <Typography variant="h5" component="div">
                   {news.text}
                 </Typography>
