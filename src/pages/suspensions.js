@@ -11,26 +11,41 @@ import {
   Typography,
 } from '@mui/material';
 
-async function fetchDataFromDb() {
-  const query = await getDocs(collection(db, "news"))
-
-  const data = [];
-  query.forEach((doc) => {
-    data.push({ id: doc.id, ...doc.data() })
-  });
-  return data;
-}
-
 const Suspensions = () => {
-
   const [newsData, setNewsData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchDataFromDb();
-      setNewsData(data);
+      try {
+        const query = await getDocs(
+          collection(db, "news"),
+        );
+
+        const data = [];
+        query.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+
+        // Sort data array in descending order:
+        data.sort((a, b) => {
+          const dateA = a.date.split('.').reverse();
+          const dateB = b.date.split('.').reverse();
+
+          for (let i = 0; i < dateA.length; i++) {
+            if (dateA[i] !== dateB[i]) {
+              return dateB[i] - dateA[i];
+            }
+          }
+          return 0;
+        });
+
+        setNewsData(data);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      }
     }
-    fetchData()
+
+    fetchData();
   }, []);
 
   return (
