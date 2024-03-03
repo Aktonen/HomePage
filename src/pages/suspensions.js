@@ -48,6 +48,28 @@ const Suspensions = () => {
     fetchData();
   }, []);
 
+  const handleUpdateClick = async () => {
+    try {
+      const response = await fetch('https://liigasafety-t5vi.onrender.com/update_data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': '193bb1eef15752d64f22f6b87d6874e6'
+        }
+      });
+
+      if (response.ok) {
+        console.log('Data updated successfully!'); 
+        // You might want to provide additional feedback to the user (e.g., a success message)
+      } else {
+        console.error('Error updating data:', response.status);
+        // Handle the error appropriately 
+      }
+    } catch (error) {
+      console.error('Error during update:', error);
+    }
+  };
+
   return (
     <>
       <h1>Liigan kurinpidon päätökset</h1>
@@ -56,6 +78,12 @@ const Suspensions = () => {
           display: 'inline-block',
         }}
       >
+        <Button
+          variant="contained" // Or any desired styling
+          onClick={handleUpdateClick}
+        >
+          Päivitä tiedot
+        </Button>
         {newsData.map((news) => (
           <Card
             variant='outlined'
