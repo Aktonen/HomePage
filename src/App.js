@@ -1,6 +1,7 @@
 import './App.css';
 import Suspensions from './pages/suspensions';
 import Electricity from './pages/electricity';
+import Home from './pages/home';
 
 import { useState } from 'react';
 import { Button } from '@mui/material';
@@ -24,6 +25,14 @@ function App() {
         Home
       </Button>
       <Button
+        onClick={() => handleNavigation("suspensions")}
+        style={{
+          color: 'black'
+        }}
+      >
+        Suspensions
+      </Button>
+      <Button
         onClick={() => handleNavigation("electricity")}
         style={{
           color: 'black'
@@ -31,7 +40,8 @@ function App() {
       >
         Electricity
       </Button>
-      {currentPage === "home" && <Suspensions />}
+      {currentPage === "home" && <Home />}
+      {currentPage === "suspensions" && <Suspensions />}
       {currentPage === "electricity" && <Electricity />}
     </div>
   );
