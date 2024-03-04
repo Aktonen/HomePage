@@ -13,7 +13,7 @@ import {
 
 const Suspensions = () => {
   const [newsData, setNewsData] = useState([]);
-  const [visibleItems, setVisibleItems] = useState(10);
+  const [visibleItems, setVisibleItems] = useState(5);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const Suspensions = () => {
   
     // Simulate fetching additional data
     setTimeout(() => { 
-        setVisibleItems(prevItems => prevItems + 10);
+        setVisibleItems(prevItems => prevItems + 5);
         setIsLoading(false); // Hide loading indicator
     }, 1000); // Simulate a 1-second delay 
   };
@@ -91,8 +91,9 @@ const Suspensions = () => {
         }}
       >
         <Button
-          variant="contained"
+          variant='contained'
           onClick={handleUpdateClick}
+          className='suspension-update-buttons'
         >
           Päivitä tiedot
         </Button>
@@ -101,21 +102,16 @@ const Suspensions = () => {
           <Card
             variant='outlined'
             className='suspension-card'
-            style={{
-              alignContent: 'middle',
-              justifyContent: 'center',
-              marginTop: '10px',
-            }}
           >
             <React.Fragment>
               <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
                   Kurinpito
                 </Typography>
-                <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
+                <Typography sx={{ fontSize: 10 }} color='text.secondary' gutterBottom>
                   {news.date}
                 </Typography>
-                <Typography variant="h5" component="div">
+                <Typography variant='h5' component='div'>
                   {news.text}
                 </Typography>
               </CardContent>
@@ -138,11 +134,12 @@ const Suspensions = () => {
         ))}
         <div style={{ display: 'inline-block', textAlign: 'center' }}>
           <Button
-            variant="contained"
+            variant='contained'
             onClick={loadMore}
             disabled={isLoading}
+            className='suspension-update-buttons'
           >
-            {isLoading ? 'Loading...' : 'Load More'}
+            {isLoading ? 'Ladataan...' : 'Lataa lisää'}
           </Button>
         </div>
       </div>

@@ -17,12 +17,16 @@ Accent: #C0C0C0 (Light Gray)
 h1 {
   margin: 0px;
   padding: 20px;
+  font-weight: 600;
 }
 
 /* Start of suspension page */
 
 .suspension-card {
   background-color: #C0C0C0 !important;
+  align-content: middle;
+  justify-content: center;
+  margin: 10px 10px 0px 10px;
 }
 
 .suspension-news-link {
@@ -34,6 +38,17 @@ h1 {
 
 .suspension-news-link:hover {
   background-color: rgba(212, 212, 212, 0.7) !important;
+}
+
+.suspension-update-buttons {
+  margin: 10px !important;
+  font-weight: 600 !important;
+}
+
+@media (min-width:801px) {
+  .suspension-card {
+    width: 700px;
+  }
 }
 
 /* End of suspension page */
