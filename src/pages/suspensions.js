@@ -1,5 +1,5 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { db } from '../firebase'
 import { getDocs, collection } from 'firebase/firestore'
 
@@ -51,6 +51,7 @@ const Suspensions = () => {
   }, []);
 
   const handleUpdateClick = async () => {
+    // Send an update POST to my own app
     try {
       const response = await fetch('https://liigasafety-t5vi.onrender.com/update_data', {
         method: 'POST',
@@ -62,10 +63,8 @@ const Suspensions = () => {
 
       if (response.ok) {
         console.log('Data updated successfully!'); 
-        // You might want to provide additional feedback to the user (e.g., a success message)
       } else {
         console.error('Error updating data:', response.status);
-        // Handle the error appropriately 
       }
     } catch (error) {
       console.error('Error during update:', error);
@@ -73,13 +72,14 @@ const Suspensions = () => {
   };
 
   const loadMore = () => {
-    setIsLoading(true); // Show loading indicator
+    // Show loading indicator
+    setIsLoading(true);
   
-    // Simulate fetching additional data (adjust if needed)
+    // Simulate fetching additional data
     setTimeout(() => { 
         setVisibleItems(prevItems => prevItems + 10);
         setIsLoading(false); // Hide loading indicator
-    }, 1000); // Simulate a 1-second delay  
+    }, 1000); // Simulate a 1-second delay 
   };
 
   return (
@@ -91,11 +91,12 @@ const Suspensions = () => {
         }}
       >
         <Button
-          variant="contained" // Or any desired styling
+          variant="contained"
           onClick={handleUpdateClick}
         >
           Päivitä tiedot
         </Button>
+        {/* From the newsData get items and remove them from the array */}
         {newsData.slice(0, visibleItems).map((news) => (
           <Card
             variant='outlined'
