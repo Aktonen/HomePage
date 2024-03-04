@@ -13,6 +13,8 @@ import {
 
 const Suspensions = () => {
   const [newsData, setNewsData] = useState([]);
+  const [visibleItems, setVisibleItems] = useState(10);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -70,6 +72,16 @@ const Suspensions = () => {
     }
   };
 
+  const loadMore = () => {
+    setIsLoading(true); // Show loading indicator
+  
+    // Simulate fetching additional data (adjust if needed)
+    setTimeout(() => { 
+        setVisibleItems(prevItems => prevItems + 10);
+        setIsLoading(false); // Hide loading indicator
+    }, 1000); // Simulate a 1-second delay  
+  };
+
   return (
     <>
       <h1>Liigan kurinpidon päätökset</h1>
@@ -84,7 +96,7 @@ const Suspensions = () => {
         >
           Päivitä tiedot
         </Button>
-        {newsData.map((news) => (
+        {newsData.slice(0, visibleItems).map((news) => (
           <Card
             variant='outlined'
             className='suspension-card'
@@ -123,6 +135,15 @@ const Suspensions = () => {
             </React.Fragment>
           </Card>
         ))}
+        <div style={{ display: 'inline-block', textAlign: 'center' }}>
+          <Button
+            variant="contained"
+            onClick={loadMore}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Loading...' : 'Load More'}
+          </Button>
+        </div>
       </div>
     </>
   )
