@@ -16,30 +16,33 @@ function App() {
 
   return (
     <div className="App">
-      <Button
-        onClick={() => handleNavigation("home")}
-        style={{
-          color: 'black'
-        }}
-      >
-        Home
-      </Button>
-      <Button
-        onClick={() => handleNavigation("suspensions")}
-        style={{
-          color: 'black'
-        }}
-      >
-        Suspensions
-      </Button>
-      <Button
-        onClick={() => handleNavigation("electricity")}
-        style={{
-          color: 'black'
-        }}
-      >
-        Electricity
-      </Button>
+      <div className='nav-wrapper'>
+        <h3
+          style={{
+            margin: '5px',
+          }}
+        >
+          Pages
+        </h3>
+        <Button
+          onClick={() => handleNavigation("home")}
+          className='nav-buttons'
+        >
+          Home
+        </Button>
+        <Button
+          onClick={() => handleNavigation("suspensions")}
+          className='nav-buttons'
+        >
+          Suspensions
+        </Button>
+        <Button
+          onClick={() => handleNavigation("electricity")}
+          className='nav-buttons'
+        >
+          Electricity
+        </Button>
+      </div>
       {currentPage === "home" && <Home />}
       {currentPage === "suspensions" && <Suspensions />}
       {currentPage === "electricity" && <Electricity />}

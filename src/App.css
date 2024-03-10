@@ -20,6 +20,66 @@ h1 {
   font-weight: 600;
 }
 
+/* Start of home page */
+
+.home-page {
+  margin: 0px 5px 0px 5px;
+  letter-spacing: 1px;
+}
+
+.hero-section h1, .hero-section div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.hero-section div {
+  padding: 0px 15px 15px 15px;
+}
+
+.nav-buttons {
+  color: white !important;
+}
+
+.nav-buttons:hover {
+  color: rgb(92, 92, 255) !important;
+}
+
+.nav-wrapper {
+  border: 2px solid white;
+  margin: 0px 2px 0px 2px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.featured-projects *, .about-me * {
+  padding: 7px;
+}
+
+.about-me, .featured-projects {
+  margin: 0px 10px 0px 10px;
+  max-width: 700px;
+  display: inline-block;
+}
+
+h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+h4 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.suspensions > ul, .electricity > ul{
+  margin: 0px !important;
+  width: fit-content;
+  display: inline-block;
+  list-style-type: disclosure-closed;
+  text-align: start;
+}
+/* End of home page */
+
 /* Start of suspension page */
 
 .suspension-card {
