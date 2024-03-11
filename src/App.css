@@ -58,7 +58,7 @@ h1 {
 }
 
 .about-me, .featured-projects {
-  margin: 0px 10px 0px 10px;
+  margin: 10px 0px 10px 0px;
   max-width: 700px;
   display: inline-block;
 }
@@ -73,12 +73,18 @@ h4 {
   margin-bottom: 0px;
 }
 
-.suspensions > ul, .electricity > ul{
+.suspensions-text > ul, .electricity-text > ul{
   margin: 0px !important;
   width: fit-content;
   display: inline-block;
   list-style-type: disclosure-closed;
   text-align: start;
+}
+
+.home-suspensions, .home-electricity, .about-me, .introduction-to-page {
+  margin: 10px 0px 10px 0px;
+  background-color: #015485;
+  border-radius: 5px;
 }
 /* End of home page */
 
