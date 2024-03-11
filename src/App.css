@@ -25,6 +25,8 @@ h1 {
 .home-page {
   margin: 0px 5px 0px 5px;
   letter-spacing: 1px;
+  display: grid;
+  justify-content: center;
 }
 
 .hero-section h1, .hero-section div {
